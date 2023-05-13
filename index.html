@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Práctica - Plataformas de distribución de contenidos 2022-23</title>
+  </head>
+  <body>
+    <h1>Práctica - Plataformas de distribución de contenidos (2022-23)</h1>
+    <p>Tarea 1.2 - Incrustar el vídeo en una web.</p>
+    <p>Permitiremos al usuario elegir entre las cuatro codificaciones realizadas.</p>
+    <div>
+        <div>
+            <label for="video-source">Elija una fuente:</label>
+            <select id="video-selector">
+              <option value=0>480p (H264)</option>
+              <option value=1>480p (VP9)</option>
+              <option value=2>240p (H264)</option>          
+              <option value=3>240p (VP9)</option>
+            </select>
+        </div>
+        <div>
+            <video id="videoPlayer" controls>
+              <source id="H264_480" src="BigBuckBunny 480p.mp4" type="video/mp4">
+              <source id="VP9_480" src="BigBuckBunny 480p.webm" type="video/webm">
+              <source id="H264_240" src="BigBuckBunny 240p.mp4" type="video/mp4">              
+              <source id="VP9_240" src="BigBuckBunny 240p.webm" type="video/webm">
+              Your browser does not support the video tag.
+            </video>
+            <p>Big Buck Bunny video fragment licensed under the Creative Commons Attribution 3.0 2008, Blender Foundation / <a href="https://www.bigbuckbunny.org">www.bigbuckbunny.org</a><p>
+        </div>
+    </div>
+    <script>
+      const sources = [ '<source id="H264_480" src="BigBuckBunny 480p.mp4" type="video/mp4">',
+                        '<source id="VP9_480" src="BigBuckBunny 480p.webm" type="video/webm">',
+                        '<source id="H264_240" src="BigBuckBunny 240p.mp4" type="video/mp4">',
+                        '<source id="VP9_240" src="BigBuckBunny 240p.webm" type="video/webm">']
+      const videoSelector = document.querySelector('#video-selector');
+      const videoPlayer = document.querySelector('#videoPlayer');
+      videoSelector.addEventListener('change', function() {
+        videoPlayer.innerHTML = sources[videoSelector.value];
+        videoPlayer.load();
+      });
+    </script>
+    <footer>Página creada por Bruno Alba.</footer>
+  </body>
+</html>
+
